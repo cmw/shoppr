@@ -23,7 +23,7 @@ module Shoppr
   end
   
   def self.map_mash_attrs(obj, mash)
-    attrs = mash.map {|k,v| k.underscore}
+    attrs = mash.map {|k,v| k.underscore}.compact
 
     obj.class_eval do
       attr_accessor *attrs
@@ -58,8 +58,10 @@ require File.join(directory, 'shoppr', 'feature_group')
 require File.join(directory, 'shoppr', 'offer_selection')
 require File.join(directory, 'shoppr', 'product_selection')
 require File.join(directory, 'shoppr', 'search_history')
+require File.join(directory, 'shoppr', 'browse_history')
 require File.join(directory, 'shoppr', 'server_detail')
 require File.join(directory, 'shoppr', 'product')
 require File.join(directory, 'shoppr', 'category')
 require File.join(directory, 'shoppr', 'generic_response')
 require File.join(directory, 'shoppr', 'general_search_response')
+require File.join(directory, 'shoppr', 'category_tree_response')

@@ -36,6 +36,10 @@ module Shoppr
       response = GeneralSearchResponse.new(default_options.merge(prep_query_options(options))) 
     end
     
+    def category_tree(options={:categoryId => 0})
+      response = CategoryTreeResponse.new(default_options.merge(prep_query_options(options)))
+    end
+    
     
     private
       def default_options

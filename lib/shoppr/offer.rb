@@ -4,7 +4,7 @@ module Shoppr
     def initialize(cat_mash)        
       Shoppr.map_mash_attrs(self, cat_mash)
       
-      @store = Store.new(self.store)
+      @store = Store.new(self.store) if self.respond_to?(:store)
       
       @featured = (@featured == "true" ? true : false)
       @used = (@used == "true" ? true : false)

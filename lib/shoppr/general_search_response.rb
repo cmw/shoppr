@@ -7,16 +7,20 @@ module Shoppr
       
       Shoppr.map_mash_attrs(self, h)
       
-      if self.categories.category.is_a?(Array)
-        @categories = self.categories.category.map {|category| Category.new(category) } 
-      else
-        @categories = [Category.new(self.categories.category)]
+      if self.respond_to? :categories
+        if self.categories.category.is_a?(Array)
+          @categories = self.categories.category.map {|category| Category.new(category) } 
+        else
+          @categories = [Category.new(self.categories.category)]
+        end
       end
       
-      if self.exceptions.exception.is_a?(Array)
-        @exceptions = self.exceptions.exception.map {|exception| APIException.new(exception) } 
-      else
-        @exceptions = [APIException.new(self.exceptions.exception)]
+      if self.respond_to? :exceptions
+        if self.exceptions.exception.is_a?(Array)
+          @exceptions = self.exceptions.exception.map {|exception| APIException.new(exception) } 
+        else
+          @exceptions = [APIException.new(self.exceptions.exception)]
+        end
       end
       
       @server_detail = ServerDetail.new(self.server_detail)  
